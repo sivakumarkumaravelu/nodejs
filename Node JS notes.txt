@@ -1,0 +1,517 @@
+V8 engine (a dll file). - designed by google to execute JS.
+
+Internet explorer - Chakra engine responsible for executing JS. (Next year Jan 2018 release, more faster than V8 engine)
+Firefox - Jacko engine responsible for executing JS.
+
+
+IO bound operations cannot be performed hence we need Node JS.
+
+Non blocking thereads are there in JS.
+
+
+NodeJS is single thread model.
+
+Event driven model use Node JS
+Real time data handling based application, yes go for Node JS.
+
+
+
+Websockets allows to get real time data.
+
+
+Single thread concurrent model.
+
+ECMA 6 renamed as Harmony.
+
+async/await
+
+
+How node works
+**************
+
+Posix async thread runs in OS. It talks to file system.
+Aync call back, the single thread running in Node JS server delegates the responsibility.
+
+Event loop continuosuly runs ans serves request. 
+
+
+libio.dll, libev.dll
+
+librabries running in C++
+
+
+Very important
+**************
+Node is not meant for huge CPU cycles. Its meant for I/O bound which is aynchronous.
+
+Refer Event loop diagram VVVV important.
+
+Node JS is event driven, full of call backs.
+
+
+nodezip from 8.4 Convert CSS to JS modules
+
+
+CPU intensive operations would be handled through Fork. Fork interacts with CPU cores directly.
+
+
+Node modules
+*************
+
+1. Built in modules
+2. Third party modules
+3. Custom modules - Our own modules
+
+
+All global var are attached to window. Node has no access to document or window, so it offers global variable.
+
+
+Few keywords...
+
+console
+require
+exports
+__dirname__
+__filename
+setInterval
+setTimeout
+
+all above functions are available in global.
+
+
+npm installs all the 3rd party dependencies.
+
+REPL mode
+********
+
+Type node we will getinto REPL mode. (REPL mode always returns something)
+
+
+process 
+*******
+
+encapsulates the run time env
+
+
+process.pid - current process that node run time is running.
+
+
+Visual code editor - shortcut
+-----------------------------
+
+View -> Integrated terminal
+
+1 module = 1 js
+
+
+3 types of functions in JS
+**************************
+
+Declarative
+Anonymous - call back
+Instance function - like constructor
+
+./<filename> - custom module
+
+<filename> - serches in node module folder, 3P modules or built in core modules.
+
+Best practice
+*************
+
+memory management for closure is better, so its a best practice
+
+
+File system
+***********
+
+File system allows us to create modify etc operations.
+
+Node is aynchronous, yet we might need sync operations. 
+
+
+Promise concept
+***************
+
+Promise suitable for aync calls so that we can handle exceptions.
+
+Promise is a objet. helps to invoke fn asyn...
+
+Resolve and reject..... sucessful means Resolve state.... failure means reject status.
+
+
+90% Node JS calls are async and non-blocking
+
+File handling
+*************
+
+Check the code which handles sync or sync
+
+
+Sync or Async is ok, but how we read a big Data? Streaming..... 
+
+
+Stream - collection of bytes....
+
+Input stream - keyboard.... 1 block =1024 bytes of data. Source to whihc we are connecting is Input stream.
+
+
+In server we are creating websockts.... those are connected to stream... websockets are API which React or Node can use.
+
+Websockets are two way communication.
+
+
+
+Event loop mechanishm is used to work with single thread to process request.(libev.dll)
+
+
+
+Buffers and Streaming
+**********************
+
+Draining effect is taken care by buffer or pipe.
+
+Using buffer we need to do manually read/write using buffer size (Useful when the medias are different like jpeg, audio etc)
+
+In case if we dont want to handle the buffer or its size then we can use Pipe.
+
+
+
+Websocket should be mounted on HTTP
+
+
+NPM recap
+********
+
+npm init
+
+Scopes.... 
+
+global         -g            ( Node express etc which we want to be present everywhere)
+local (dev)    --save -dev   (Babel loader, jasmine testing etc)
+local (prod)   --save
+
+
+Day 1 and Day 2 topics covered
+******************************
+
+
+1. Understand Node architecture
+2. global module & process module
+3. Creating Custom module
+4. Event handling (custom)
+5. File system
+6. Stream with Buffer & pipe
+7. Networking
+     a. Sockets
+     b. web socket
+     c. socket.io
+8. Http server
+9. express
+      What is express
+      middleware
+      Routing
+      Template engines (Jade/EJS....)
+      REST API
+      Third party moduels (client-session,cookies,bcript)
+10. mongodb
+11. Mongoose (DAL)
+12. Mocked project  using above express.
+-------------------------------------- 
+
+
+Express JS
+**********
+
+
+Express internally uses HTTP protocol.
+
+set
+get
+post
+put
+delete
+
+Node mon
+********
+
+Nodemon is a hot deployment for Node code.
+
+--save will not work.... it should be always global
+
+npm install nodemon -g
+nodemon expressserver.js
+
+
+
+1) Install express in global scope. npm install express -g
+2) Install express-generator in global scope.... npm i express-generator -g
+
+3) express myapp
+
+Check the package.json generated
+
+Jade - Template engine, parses and forms HTML tag. Remove the brackets and it becomes Jade.
+EJS - alternative for Jade, embedded Java script. Eg: <%="hello" />
+
+npm start
+
+
+Interceptors are called middleware.
+
+
+Request level middlewares are only there, no response level (But we can do that in server level before returning response, but thats not a middleware)
+
+
+server.js--- same code as in http but difference is we have wrappers, middleware is present... interceptors are present... etc. res.send, res.sendFile... all wrapping the streams and pipe etc.
+
+
+nodemon server.js
+
+Case study with EJS
+*******************
+
+EJS is mix of html,css and javascript. 
+
+npm install ejs --save
+
+
+
+Case study
+********
+
+views folder has ejs/js templates
+
+npm init -y
+
+npm install express --save   (express generator also cannot be used it generates a skeleton)
+
+npm install ejs --save
+
+	Create a file app.js
+
+	nodemon app.js  - Displays a static content
+
+npm install body-parser --save    (A middleware)
+
+npm install mongoose --save    (A modules that is going to perform CRUD operations in the DB, ORM sort of)
+
+
+Session handling
+****************
+
+npm install client-sessions --save
+
+app.locals.pretty=true;  - Only use for dev purpose.
+
+
+Session is encrypted and not form data.
+
+Sesssion handled next is encryption.
+
+Encryption using bcrypt
+***********************
+
+Since we have not encrypted password we are doing so now in Level 4.
+
+28 encryption modules are present in node modules.
+
+npm install bcryptjs --save
+
+CSRF module to prevent CSRF attacks (Level 5)
+***********************************
+
+While posting middleware takes care of this token verification.
+
+Form post data is taken care here. So putting in header dont work.
+
+npm install csurf --save
+
+Protecting application using Helmet
+***********************************
+
+npm install helmet --save
+
+
+Sockets
+******
+JS cannot connect with sockets from browser.
+Websocket is solution, but latest browser dont support.
+
+Socket IO is a module that will solve this.
+
+Codeshare.io works on the same tech.
+
+Similar to signal R in Microsoft. 
+
+Socket IO generates dynamic code.
+
+
+Wrapper to websocket is socket IO. (because to support older version of browsers)
+
+Socket code supports only browser UI.
+
+
+socket.io.js - client side IO.
+
+Through socket Io we can pass unlimited data.
+
+Day 3: 
+*****
+
+Async and await.
+
+Say we have a sequence of tasks. We can keep an array of tasks and iterate in which case it will be sequential and its a bad practise in Nodejs.
+
+Goal is to perform a sequence of tasks in sequence async manner.
+
+Async and Nimble to the rescue.
+
+Async works with Promise.... Promise is API that works with async. (Resolve and reject)
+
+Promise supports nested, hybrid and parallel way of invocation.
+
+   -async.series
+   -async.parallel
+   -async.auto
+
+Event loop mechanism in JS. Call backs are attached.
+
+Order of execution is guaranteed.
+
+Very important
+**************
+
+Main thread is not blocked here. The events raised are taken care by event loop. And that is taken care by async (series or parallel).
+
+However callback is run by main thread which is blocking.
+
+Do operations like IO in main thread, so that POSIX threads pick up and main thread is always free.
+
+Multiple call backs not supported.
+
+For async try catch not possible. But await can.
+
+Mongo DB uses Promise, async operations.
+
+Await
+*****
+
+Await is a marker. 
+
+Async and await is a microsoft contribution to Node.
+
+From Node 7.6 async and await is available. Multiple await can be given but only one async.
+
+
+Up next
+*******
+
+1) Own REST API (HAPI JS recent module (Spring REST for Java), JOI one more module works with HAPI JS to perform validation).
+
+Express is not 100% REST. Professional modules say HAPI and RESTIFY are recognized one.
+
+2) MVC in Node JS. 
+
+3) Deployment (Load balancing and clusters (internally uses FORK)). Dont give too much work on main thread, use FORK. - These work on process CORES.
+
+   Group of cores are clusters. group of clusters - we do with pure load balancing. (Session and cache maintenance centrally - Memcache)
+
+4) Process manager module 
+5) MoCHA testing.
+
+HAPI JS
+*******
+
+GET, POST thru HTTP can be done but that doesnt ather the standard of REST.
+
+HAPI is just for writing business logic and not template engines.
+
+Using hapi server, node express is not required.
+
+HAPI also uses internally HTTP server.
+
+More powerful, we can write custom middleware or even add. Express also we can do, but HAPI athers to REST standards.
+
+Automatic content negotiation is done by HAPI.
+
+When we install HAP, JOI comes with it.
+
+
+Forking
+******
+
+One master controls several child.
+
+Donot use global operations in child. Master should take care.
+
+Cluster
+******
+
+Cluster is a built in module. 
+
+We can configure how many child process we want.
+
+Cluster creates number of forks. Every fork we can run an express instance. Cluster is an internal load balancer which takes the request and it will forward to any express instance which is free.
+
+
+Cluster internally uses fork.
+
+
+Refer code, http-proxy-scale.js
+
+3 node instances are running. 
+
+HTTP proxy is good as we are just handling the req/response and not buisness logic.
+
+
+Proxy runs on 9000 port..... and we have 3 node instances running on 3000, 3001 and 3002.... 
+
+In the proxy we have web method which will delegate accordingly.
+
+Next issue..... 
+***************
+
+Ok now we have done clusters.... but what if request and response sent from/two to two different instances... .
+
+Memcache to the rescue.... 
+
+Memcache 
+********
+
+npm install connect-memcached
+
+net start memcache (separate process)
+
+connect memcache to the module.
+
+
+
+pm2 start app.js
+
+pm2 status
+
+pm2 monit
+
+
+keymetrics.io
+
+pm2 link es6ar255va27mo0 t84cua3udpw0dil
+
+
+Mocha testing
+*************
+
+npm install mocha -g
+
+npm install chai --save -dev
+
+
+
+
+	dropbox link:
+	------------
+	http://bit.ly/2khzQcb
+
+	dsrmurthy786@yahoo.com
+
+        98480 11641

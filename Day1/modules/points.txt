@@ -1,0 +1,8 @@
+Module is a container for functions adn cvariables(data)
+One module can use other module (reusuability of module/extend)
+
+built-in, Third party, custom
+
+Use Instance function based module particularly working with DB model.
+
+Use library based (closure) modules/configuration. - Eg Lodash/_ library

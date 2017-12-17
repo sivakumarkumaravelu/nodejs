@@ -1,0 +1,58 @@
+Mongo DB
+********
+
+By default it opens in REPL mode (running mongo...)
+
+Post installation run below
+
+1.mongod.exe 
+2.mongo (Opens repel mode)
+
+db (shows current DB name)
+use trainingdb (changes the DB to trainingdb)
+
+
+> use trainingdb
+switched to db trainingdb
+> db.users.insert({
+... username:'sivakumar',
+... age:50,
+... registered:true,
+... email:'sivakumar.kumaravelu@gmail.com',
+... address:{
+... street:'RN Puram',
+... city:'Coimbatore',
+... state:'TN',
+... zip:641045
+... }
+... })
+WriteResult({ "nInserted" : 1 })
+>
+
+
+> db.users.find();
+{ "_id" : ObjectId("5a34f9ecac593071d3397713"), "username" : "sivakumar", "age" : 50, "registered" : true, "email" : "sivakumar.kumaravelu@gmail.com", "address" : { "street" : "RN Puram", "city" : "Coimbatore", "state" : "TN", "zip" : 641045 } }
+
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("5a34f9ecac593071d3397713"),
+        "username" : "sivakumar",
+        "age" : 50,
+        "registered" : true,
+        "email" : "sivakumar.kumaravelu@gmail.com",
+        "address" : {
+                "street" : "RN Puram",
+                "city" : "Coimbatore",
+                "state" : "TN",
+                "zip" : 641045
+        }
+}
+
+
+> db.users.find({"age":50});
+{ "_id" : ObjectId("5a34f9ecac593071d3397713"), "username" : "sivakumar", "age" : 50, "registered" : true, "email" : "sivakumar.kumaravelu@gmail.com", "address" : { "street" : "RN Puram", "city" : "Coimbatore", "state" : "TN", "zip" : 641045 } }
+> db.users.find({"age":40});
+
+
+$or, 
+$not.... .sort etc
